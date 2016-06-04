@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{673CF4D7-947F-4502-90D0-47EA3E5BC171}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{2204A2C6-2235-4620-9025-3A8039E9BC6F}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Consecutive.Console</RootNamespace>
-    <AssemblyName>Consecutive.Console</AssemblyName>
+    <RootNamespace>Consecutive.Core</RootNamespace>
+    <AssemblyName>Consecutive.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,17 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="ConsecutiveApplication.cs" />
+    <Compile Include="Converters\GroupConverter.cs" />
+    <Compile Include="Converters\IGroupConverter.cs" />
+    <Compile Include="GroupDescriptor.cs" />
+    <Compile Include="Partition\IConsecutivePartitioner.cs" />
+    <Compile Include="Partition\PartitionInMemory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Consecutive.Core\Consecutive.Core.csproj">
-      <Project>{2204a2c6-2235-4620-9025-3a8039e9bc6f}</Project>
-      <Name>Consecutive.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
