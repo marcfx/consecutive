@@ -4,25 +4,25 @@ namespace Consecutive.Core.Partition
 {
     public class PartitionInMemory : IConsecutivePartitioner
     {
-        public IEnumerable<GroupDescriptor> Partition(IList<uint> values)
+        public IEnumerable<GroupDescriptor> Partition(IList<uint> sorted)
         {
-            if (values == null || values.Count == 0)
+            if (sorted == null || sorted.Count == 0)
             {
                 yield break;
             }
 
             int startIndex = 0;
-            for (int i = 1; i < values.Count; i++)
+            for (int i = 1; i < sorted.Count; i++)
             {
-                if (IsConsecutive(values, i))
+                if (IsConsecutive(sorted, i))
                 {
                     continue;
                 }
-                yield return new GroupDescriptor(values[startIndex], i - startIndex); 
+                yield return new GroupDescriptor(sorted[startIndex], i - startIndex); 
                 startIndex = i;
             }
 
-            yield return new GroupDescriptor(values[startIndex], values.Count - startIndex);
+            yield return new GroupDescriptor(sorted[startIndex], sorted.Count - startIndex);
         }
 
         private static bool IsConsecutive(IList<uint> values, int currentIndex)

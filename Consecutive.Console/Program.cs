@@ -10,26 +10,20 @@ namespace Consecutive.Console
 {
     class Program
     {
-        static void Main2(string[] args)
+        static void Main(string[] args)
         {
-            StringBuilder output= new StringBuilder();
-            using (StreamWriter sw = new StreamWriter("Test1.txt", false, Encoding.ASCII, 524288))
+            Random rnd = new Random();
+            using (StreamWriter sw = new StreamWriter("Test2.txt", false, Encoding.ASCII, 524288))
             {
                 for (uint i = 0; i < uint.MaxValue; i++)
                 {
-                    sw.Write($"{i} ");
+                    uint n = (uint)Math.Abs(rnd.Next(0,int.MaxValue))*2;
+                    sw.Write($"{ n } ");
                 }
             }
         }
 
-        static void Main(string[] args)
-        {
-            List<uint> big = new List<uint>();
-            for (uint i = 0; i < uint.MaxValue; i++)
-            {
-                big.Add(i);
-            }
-        }
+
 
         //public static void Main(string[] args)
         //{

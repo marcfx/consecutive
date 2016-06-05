@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,11 +22,20 @@ namespace Consecutive.Core
 
         public string Process(string input)
         {
-            IEnumerable<uint> numbers = _groupConverter.Parse(input);
-            IList<uint> numbersInMemory = numbers.ToArray();
-            var partitionResult = _consecutivePartitioner.Partition(numbersInMemory);
-            //_groupConverter.Convert()
-            return null;
+            IEnumerable<uint> numbersRaw = _groupConverter.Parse(input);
+            IEnumerable<uint> numbersSorted = numbersRaw.Distinct().OrderBy(n => n);
+            IList<uint> numbersInMemory = numbersSorted.ToArray();
+            IEnumerable<GroupDescriptor> partitionResult = _consecutivePartitioner.Partition(numbersInMemory);
+            return _groupConverter.Convert(partitionResult);
         }
+
+        //public StreamWriter Process(StreamReader streamReader)
+        //{
+        //    //IEnumerable<uint> numbersRaw = _groupConverter.Parse(input);
+        //    //IEnumerable<uint> numbersSorted = numbersRaw.Distinct().OrderBy(n => n);
+        //    //IList<uint> numbersInMemory = numbersSorted.ToArray();
+        //    //IEnumerable<GroupDescriptor> partitionResult = _consecutivePartitioner.Partition(numbersInMemory);
+        //    //return _groupConverter.Convert(partitionResult);
+        //}
     }
 }
