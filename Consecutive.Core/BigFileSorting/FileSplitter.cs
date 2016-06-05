@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Consecutive.Core.Partition.ExternalMergeSort
+namespace Consecutive.Core.BigFileSorting
 {
     public class FileSplitter
     {

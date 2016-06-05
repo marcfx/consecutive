@@ -43,17 +43,18 @@
     <Compile Include="ConsecutiveApplication.cs" />
     <Compile Include="Converters\GroupConverter.cs" />
     <Compile Include="Converters\IGroupConverter.cs" />
-    <Compile Include="FileSystem.cs" />
-    <Compile Include="GroupDescriptor.cs" />
-    <Compile Include="IFileSystem.cs" />
-    <Compile Include="Partition\ExternalMergeSort\BigFileSorter.cs" />
-    <Compile Include="Partition\ExternalMergeSort\BinaryStreamSorter.cs" />
-    <Compile Include="Partition\ExternalMergeSort\FilePartMerger.cs" />
-    <Compile Include="Partition\ExternalMergeSort\FileSplitter.cs" />
+    <Compile Include="BigFileSorting\FileSystem.cs" />
+    <Compile Include="Partition\GroupDescriptor.cs" />
+    <Compile Include="BigFileSorting\IFileSystem.cs" />
+    <Compile Include="BigFileSorting\BigFileSorter.cs" />
+    <Compile Include="BigFileSorting\BinaryStreamSorter.cs" />
+    <Compile Include="BigFileSorting\FilePartMerger.cs" />
+    <Compile Include="BigFileSorting\FileSplitter.cs" />
     <Compile Include="Partition\IConsecutivePartitioner.cs" />
     <Compile Include="Partition\PartitionInMemory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

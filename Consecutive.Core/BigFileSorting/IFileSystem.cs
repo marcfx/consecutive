@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Consecutive.Core
+namespace Consecutive.Core.BigFileSorting
 {
     public interface IFileSystem
     {

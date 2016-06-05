@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Consecutive.Core.Partition.ExternalMergeSort;
+using Consecutive.Core.BigFileSorting;
 using NUnit.Framework;
 
 namespace Consecutive.Tests.Partition.ExternalMergeSort

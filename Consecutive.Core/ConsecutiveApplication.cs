@@ -28,14 +28,6 @@ namespace Consecutive.Core
             IEnumerable<GroupDescriptor> partitionResult = _consecutivePartitioner.Partition(numbersInMemory);
             return _groupConverter.Convert(partitionResult);
         }
-
-        //public StreamWriter Process(StreamReader streamReader)
-        //{
-        //    //IEnumerable<uint> numbersRaw = _groupConverter.Parse(input);
-        //    //IEnumerable<uint> numbersSorted = numbersRaw.Distinct().OrderBy(n => n);
-        //    //IList<uint> numbersInMemory = numbersSorted.ToArray();
-        //    //IEnumerable<GroupDescriptor> partitionResult = _consecutivePartitioner.Partition(numbersInMemory);
-        //    //return _groupConverter.Convert(partitionResult);
-        //}
+        
     }
 }

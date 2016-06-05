@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Consecutive.Core;
-using Consecutive.Core.Partition.ExternalMergeSort;
+using Consecutive.Core.BigFileSorting;
 using NUnit.Framework.Internal;
 using NUnit.Framework;
 

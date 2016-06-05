@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Consecutive.Core.Partition;
 
 namespace Consecutive.Core.Converters
 {

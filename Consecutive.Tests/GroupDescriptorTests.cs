@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Consecutive.Core;
 using Consecutive.Core.Converters;
+using Consecutive.Core.Partition;
 using NUnit.Framework.Internal;
 using NUnit.Framework;
 

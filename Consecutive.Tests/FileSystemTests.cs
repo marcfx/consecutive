@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Consecutive.Core;
+using Consecutive.Core.BigFileSorting;
 using NUnit.Framework;
 
 namespace Consecutive.Tests

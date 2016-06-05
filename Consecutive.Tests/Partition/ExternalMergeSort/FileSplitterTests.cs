@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using Consecutive.Core;
-using Consecutive.Core.Partition.ExternalMergeSort;
+using Consecutive.Core.BigFileSorting;
 using NSubstitute;
 using NUnit.Framework.Internal;
 using NUnit.Framework;

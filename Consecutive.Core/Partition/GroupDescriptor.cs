@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Consecutive.Core
+namespace Consecutive.Core.Partition
 {
     public class GroupDescriptor
     {
