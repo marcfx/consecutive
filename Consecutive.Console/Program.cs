@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Consecutive.Core;
+using Consecutive.Core.Converters;
+using Consecutive.Core.Partition;
 
 namespace Consecutive.Console
 {
@@ -12,29 +14,28 @@ namespace Consecutive.Console
     {
         static void Main(string[] args)
         {
-            Random rnd = new Random();
-            using (StreamWriter sw = new StreamWriter("Test3.txt", false, Encoding.ASCII, 524288))
+            var options = new Options();
+            if (CommandLine.Parser.Default.ParseArguments(args, options))
             {
-                for (uint i = 0; i < 1000*1000*1000*2.9; i++)
+                if (options.SampleFile != null)
                 {
-                    uint n = (uint)Math.Abs(rnd.Next(0,int.MaxValue))*2;
-                    sw.Write($"{ n } ");
+                    new SampleGenerator().GenerateSampleFile(options.SampleFile, options.SampleFileSize);
+                }
+                using (TextWriter outputWriter = GetOutputWriter(options))
+                {
+                    Bootstrap().ProcessFile(options.InputFile, outputWriter);
                 }
             }
         }
 
+        private static TextWriter GetOutputWriter(Options options)
+        {
+            return options.IsOutputFileSet ? File.CreateText(options.OutputFile) : System.Console.Out;
+        }
 
-
-        //public static void Main(string[] args)
-        //{
-        //    var values = new uint[] { 1, 2, 3, 18, 19, 24,25 };
-        //    foreach (var tuple in values.Partition())
-        //    {
-        //        System.Console.WriteLine(values[tuple.Item1] + "-" + tuple.Item2);
-        //        //Enumerable.Range(values[tuple.Item1], values[tuple.Item2]).Select
-
-
-        //    }
-        //}
+        private static ConsecutiveApplication Bootstrap()
+        {
+            return new ConsecutiveApplication(new GroupConverter(), new ConsecutivePartitioner(), System.Console.Out);
+        }
     }
 }

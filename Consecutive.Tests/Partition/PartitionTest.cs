@@ -41,6 +41,20 @@ namespace Consecutive.Tests.Partition
         }
 
         [Test]
+        public void PartitionTestNotConsecutive()
+        {
+            ConsecutivePartitioner cut = new ConsecutivePartitioner();
+            IList<uint> input = new uint[] { 1, 11, 11111 };
+            IEnumerable<GroupDescriptor> result = cut.Partition(input);
+            CollectionAssert.AreEqual(new[]
+            {
+                new GroupDescriptor(1,1),
+                new GroupDescriptor(11,1),
+                new GroupDescriptor(11111,1),
+            }, result);
+        }
+
+        [Test]
         public void PartitionTest_Single()
         {
             ConsecutivePartitioner cut = new ConsecutivePartitioner();

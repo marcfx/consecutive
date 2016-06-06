@@ -29,11 +29,16 @@ namespace Consecutive.Tests
 
         [Test]
         
-        public void Test()
+        public void GetValuesFromArray()
         {
-            BitArray ba = new BitArray(int.MaxValue);
-            ba.Set(int.MaxValue-1, true);
-            Assert.IsTrue(ba.Get(int.MaxValue-1));
+            var cut = new BitArrayUint();
+            cut.Set(1, true);
+            cut.Set(11, true);
+            cut.Set(11111, true);
+            cut.Set(100000000, true);
+            cut.Set(4000000000, true);
+            CollectionAssert.AreEqual(
+                new uint[] {1,11,11111, 100000000, 4000000000 }, cut.GetValuesFromArray());
         }
 
     }

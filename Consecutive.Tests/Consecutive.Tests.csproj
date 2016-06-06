@@ -61,9 +61,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BigArrayUintTests.cs" />
-    <Compile Include="BitmaskUitFinderTests.cs" />
+    <Compile Include="BitmaskUintFinderTests.cs" />
     <Compile Include="Converters\GroupConverterTests.cs" />
-    <Compile Include="ConsecutivePartitionerIntegrationTests.cs" />
+    <Compile Include="ConsecutiveApplicationTests.cs" />
     <Compile Include="FileSystemTests.cs" />
     <Compile Include="GroupDescriptorTests.cs" />
     <Compile Include="Partition\ExternalMergeSort\BigFileSorterTests.cs" />

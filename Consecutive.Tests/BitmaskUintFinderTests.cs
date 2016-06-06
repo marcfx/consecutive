@@ -11,32 +11,24 @@ using NUnit.Framework;
 namespace Consecutive.Tests
 {
     [TestFixture]
-    class BitmaskUitFinderTests
+    class BitmaskUintFinderTests
     {
         [Test]
         public void FindAllUintsTest()
         {
-            BitmaskUitFinder cut = new BitmaskUitFinder();
-            BitArray uints;
-            using (StreamReader streamReader = GenerateStreamFromString("0 33 102345 99999911"))
+            BitmaskUintFinder cut = new BitmaskUintFinder();
+            BitArrayUint uints;
+            using (StreamReader streamReader = GenerateStreamFromString("0 33 102345 99999911 2999991122"))
             {
                 uints = cut.FindAllUints(streamReader);
             }
-            Assert.IsTrue(uints[0]);
-            Assert.IsTrue(uints[33]);
-            Assert.IsTrue(uints[102345]);
-            Assert.IsTrue(uints[99999911]);
-
+            Assert.IsTrue(uints.Get(0));
+            Assert.IsTrue(uints.Get(33));
+            Assert.IsTrue(uints.Get(102345));
+            Assert.IsTrue(uints.Get(99999911));
+            Assert.IsTrue(uints.Get(2999991122));
         }
-
-        [Test]
-        public void StoreUint()
-        {
-            int intInUintMax = (int)(uint.MaxValue - int.MaxValue-1);
-            var intInUintMin = (int)uint.MinValue - int.MaxValue;
-
-        }
-
+       
         private StreamReader GenerateStreamFromString(string s)
         {
             MemoryStream stream = new MemoryStream();

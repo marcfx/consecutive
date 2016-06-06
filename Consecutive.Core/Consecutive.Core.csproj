@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ShellProgressBar, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ShellProgressBar.3.0.0.0\lib\NET4\ShellProgressBar.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BigFileUniqueNumbers\BitArrayUint.cs" />
-    <Compile Include="BigFileUniqueNumbers\BitmaskUitFinder.cs" />
+    <Compile Include="BigFileUniqueNumbers\BitmaskUintFinder.cs" />
     <Compile Include="ConsecutiveApplication.cs" />
     <Compile Include="Converters\GroupConverter.cs" />
     <Compile Include="Converters\IGroupConverter.cs" />
@@ -56,7 +60,9 @@
     <Compile Include="Partition\ConsecutivePartitioner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

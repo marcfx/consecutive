@@ -59,5 +59,17 @@ namespace Consecutive.Core.BigFileUniqueNumbers
         {
             return (int)(index - int.MaxValue-1);
         }
+
+        public IEnumerable<uint> GetValuesFromArray()
+        {
+            for (uint valuesFromArray = 0; valuesFromArray < uint.MaxValue; valuesFromArray++)
+            {
+                if (!Get(valuesFromArray))
+                {
+                    continue;
+                }
+                yield return valuesFromArray;
+            }
+        }
     }
 }

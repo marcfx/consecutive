@@ -22,6 +22,7 @@ namespace Consecutive.Core.Converters
             return string.Join(ElementSeparator, groupStrings);
         }
 
+
         public string Convert(IEnumerable<IEnumerable<uint>> numbers)
         {
             return string.Join(ElementSeparator, numbers.Select(Convert));
