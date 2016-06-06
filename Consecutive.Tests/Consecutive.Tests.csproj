@@ -60,6 +60,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="BigArrayUintTests.cs" />
+    <Compile Include="BitmaskUitFinderTests.cs" />
     <Compile Include="Converters\GroupConverterTests.cs" />
     <Compile Include="ConsecutivePartitionerIntegrationTests.cs" />
     <Compile Include="FileSystemTests.cs" />

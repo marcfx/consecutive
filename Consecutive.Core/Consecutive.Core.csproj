@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BigFileUniqueNumbers\BitArrayUint.cs" />
+    <Compile Include="BigFileUniqueNumbers\BitmaskUitFinder.cs" />
     <Compile Include="ConsecutiveApplication.cs" />
     <Compile Include="Converters\GroupConverter.cs" />
     <Compile Include="Converters\IGroupConverter.cs" />
