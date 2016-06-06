@@ -51,7 +51,7 @@
     <Compile Include="BigFileSorting\FilePartMerger.cs" />
     <Compile Include="BigFileSorting\FileSplitter.cs" />
     <Compile Include="Partition\IConsecutivePartitioner.cs" />
-    <Compile Include="Partition\PartitionInMemory.cs" />
+    <Compile Include="Partition\ConsecutivePartitioner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

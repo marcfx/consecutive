@@ -15,7 +15,7 @@ namespace Consecutive.Console
             Random rnd = new Random();
             using (StreamWriter sw = new StreamWriter("Test3.txt", false, Encoding.ASCII, 524288))
             {
-                for (uint i = 0; i < 1000*1000*1000*2; i++)
+                for (uint i = 0; i < 1000*1000*1000*2.9; i++)
                 {
                     uint n = (uint)Math.Abs(rnd.Next(0,int.MaxValue))*2;
                     sw.Write($"{ n } ");

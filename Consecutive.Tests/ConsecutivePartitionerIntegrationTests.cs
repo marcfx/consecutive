@@ -14,7 +14,7 @@ namespace Consecutive.Tests
         [TestCase("24,2,5,22,8,4,3,23,22", "{2,3,4,5},{8},{22,23,24}")]
         public void ProcessTest(string input, string expected)
         {
-            var target = new ConsecutiveApplication(new GroupConverter(), new PartitionInMemory());
+            var target = new ConsecutiveApplication(new GroupConverter(), new ConsecutivePartitioner());
             string result = target.Process(input);
             Assert.AreEqual(expected, result);
         }
@@ -22,7 +22,7 @@ namespace Consecutive.Tests
         [TestCase("Test1.txt")]
         public void ProcessFileTest(string file)
         {
-            //var target = new ConsecutiveApplication(new GroupConverter(), new PartitionInMemory());
+            //var target = new ConsecutiveApplication(new GroupConverter(), new ConsecutivePartitioner());
             //string result = target.Process(input);
             //Assert.AreEqual(expected, result);
 

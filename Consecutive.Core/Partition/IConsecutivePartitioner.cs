@@ -4,6 +4,8 @@ namespace Consecutive.Core.Partition
 {
     public interface IConsecutivePartitioner
     {
-        IEnumerable<GroupDescriptor> Partition(IList<uint> sorted);
+        IEnumerable<GroupDescriptor> PartitionInMemory(IList<uint> sorted);
+
+        IEnumerable<GroupDescriptor> Partition(IEnumerable<uint> sorted);
     }
 }
