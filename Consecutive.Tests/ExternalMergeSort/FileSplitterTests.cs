@@ -1,10 +1,10 @@
 ﻿using System.IO;
-using Consecutive.Core.BigFileSorting;
+using Consecutive.Core.ExternalMergeSort;
 using Consecutive.Core.ProgressBar;
 using NSubstitute;
 using NUnit.Framework;
 
-namespace Consecutive.Tests.Partition.ExternalMergeSort
+namespace Consecutive.Tests.ExternalMergeSort
 {
     [TestFixture]
     public class FileSplitterTests

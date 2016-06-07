@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Consecutive.Core.BigFileSorting;
-using Consecutive.Core.BigFileUniqueNumbers;
+using Consecutive.Core.BitmaskSort;
 using Consecutive.Core.Converters;
+using Consecutive.Core.ExternalMergeSort;
 using Consecutive.Core.Partition;
 using Consecutive.Core.ProgressBar;
 using ShellProgressBar;

@@ -1,7 +1,7 @@
-﻿using Consecutive.Core.BigFileUniqueNumbers;
+﻿using Consecutive.Core.BitmaskSort;
 using NUnit.Framework;
 
-namespace Consecutive.Tests
+namespace Consecutive.Tests.BitmaskSort
 {
     [TestFixture]
     class BigArrayUIntTests

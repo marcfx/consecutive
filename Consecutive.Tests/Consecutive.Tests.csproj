@@ -60,15 +60,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="BigArrayUintTests.cs" />
-    <Compile Include="BitmaskUintFinderTests.cs" />
+    <Compile Include="BitmaskSort\BigArrayUintTests.cs" />
+    <Compile Include="BitmaskSort\BitmaskUintFinderTests.cs" />
     <Compile Include="Converters\GroupConverterTests.cs" />
     <Compile Include="ConsecutiveApplicationTests.cs" />
-    <Compile Include="FileSystemTests.cs" />
-    <Compile Include="GroupDescriptorTests.cs" />
-    <Compile Include="Partition\ExternalMergeSort\BinaryStreamSorterTests.cs" />
-    <Compile Include="Partition\ExternalMergeSort\FilePartMergerTests.cs" />
-    <Compile Include="Partition\ExternalMergeSort\FileSplitterTests.cs" />
+    <Compile Include="ExternalMergeSort\FileSystemTests.cs" />
+    <Compile Include="Partition\GroupDescriptorTests.cs" />
+    <Compile Include="ExternalMergeSort\BinaryStreamSorterTests.cs" />
+    <Compile Include="ExternalMergeSort\FilePartMergerTests.cs" />
+    <Compile Include="ExternalMergeSort\FileSplitterTests.cs" />
     <Compile Include="Partition\PartitionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

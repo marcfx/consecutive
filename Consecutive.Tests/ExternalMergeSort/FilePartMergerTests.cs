@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Consecutive.Core.BigFileSorting;
+using Consecutive.Core.ExternalMergeSort;
 using NUnit.Framework;
 
-namespace Consecutive.Tests.Partition.ExternalMergeSort
+namespace Consecutive.Tests.ExternalMergeSort
 {
     [TestFixture()]
     class FilePartMergerTests

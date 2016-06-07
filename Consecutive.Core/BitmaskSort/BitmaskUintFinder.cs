@@ -1,13 +1,11 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Consecutive.Core.ProgressBar;
-using ShellProgressBar;
 
-namespace Consecutive.Core.BigFileUniqueNumbers
+namespace Consecutive.Core.BitmaskSort
 {
     public class BitmaskUIntFinder
     {
-        private IProgress progress;
+        private readonly IProgress progress;
 
         public BitmaskUIntFinder(IProgress progress)
         {

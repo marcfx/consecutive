@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace Consecutive.Core.BigFileUniqueNumbers
+namespace Consecutive.Core.BitmaskSort
 {
     public class BitArrayUInt
     {

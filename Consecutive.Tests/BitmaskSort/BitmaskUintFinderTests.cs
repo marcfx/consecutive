@@ -1,10 +1,10 @@
 ﻿using System.IO;
-using Consecutive.Core.BigFileUniqueNumbers;
+using Consecutive.Core.BitmaskSort;
 using Consecutive.Core.ProgressBar;
 using NSubstitute;
 using NUnit.Framework;
 
-namespace Consecutive.Tests
+namespace Consecutive.Tests.BitmaskSort
 {
     [TestFixture]
     class BitmaskUIntFinderTests

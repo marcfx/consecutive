@@ -1,9 +1,7 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Consecutive.Core.ProgressBar;
-using ShellProgressBar;
 
-namespace Consecutive.Core.BigFileSorting
+namespace Consecutive.Core.ExternalMergeSort
 {
     public class FileSplitter
     {

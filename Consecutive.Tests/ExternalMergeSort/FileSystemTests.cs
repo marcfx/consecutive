@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Consecutive.Core;
-using Consecutive.Core.BigFileSorting;
+using Consecutive.Core.ExternalMergeSort;
 using NUnit.Framework;
 
-namespace Consecutive.Tests
+namespace Consecutive.Tests.ExternalMergeSort
 {
     [TestFixture]
     class FileSystemTests

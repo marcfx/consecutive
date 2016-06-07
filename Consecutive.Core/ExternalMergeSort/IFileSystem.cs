@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Consecutive.Core.BigFileSorting
+namespace Consecutive.Core.ExternalMergeSort
 {
     public interface IFileSystem
     {

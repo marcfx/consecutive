@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Consecutive.Core;
-using Consecutive.Core.Converters;
+﻿using System.Collections.Generic;
 using Consecutive.Core.Partition;
-using NUnit.Framework.Internal;
 using NUnit.Framework;
 
-namespace Consecutive.Tests
+namespace Consecutive.Tests.Partition
 {
     [TestFixture]
     public class GroupDescriptorTests

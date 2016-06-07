@@ -45,18 +45,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithm.cs" />
-    <Compile Include="BigFileUniqueNumbers\BitArrayUint.cs" />
-    <Compile Include="BigFileUniqueNumbers\BitmaskUintFinder.cs" />
+    <Compile Include="BitmaskSort\BitArrayUint.cs" />
+    <Compile Include="BitmaskSort\BitmaskUintFinder.cs" />
     <Compile Include="ConsecutiveApplication.cs" />
     <Compile Include="Converters\GroupConverter.cs" />
     <Compile Include="Converters\IGroupConverter.cs" />
-    <Compile Include="BigFileSorting\FileSystem.cs" />
+    <Compile Include="ExternalMergeSort\FileSystem.cs" />
     <Compile Include="Partition\GroupDescriptor.cs" />
-    <Compile Include="BigFileSorting\IFileSystem.cs" />
-    <Compile Include="BigFileSorting\BigFileSorter.cs" />
-    <Compile Include="BigFileSorting\BinaryStreamSorter.cs" />
-    <Compile Include="BigFileSorting\FilePartMerger.cs" />
-    <Compile Include="BigFileSorting\FileSplitter.cs" />
+    <Compile Include="ExternalMergeSort\IFileSystem.cs" />
+    <Compile Include="ExternalMergeSort\BigFileSorter.cs" />
+    <Compile Include="ExternalMergeSort\BinaryStreamSorter.cs" />
+    <Compile Include="ExternalMergeSort\FilePartMerger.cs" />
+    <Compile Include="ExternalMergeSort\FileSplitter.cs" />
     <Compile Include="Partition\IConsecutivePartitioner.cs" />
     <Compile Include="Partition\ConsecutivePartitioner.cs" />
     <Compile Include="ProgressBar\IProgress.cs" />

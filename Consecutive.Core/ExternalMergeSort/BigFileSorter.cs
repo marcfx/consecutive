@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using ShellProgressBar;
 
-namespace Consecutive.Core.BigFileSorting
+namespace Consecutive.Core.ExternalMergeSort
 {
     public class BigFileSorter
     {
