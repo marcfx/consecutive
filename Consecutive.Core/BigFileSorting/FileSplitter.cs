@@ -1,29 +1,34 @@
-﻿using System.IO;
-using System.Text;
+﻿using System;
+using System.IO;
+using Consecutive.Core.ProgressBar;
+using ShellProgressBar;
 
 namespace Consecutive.Core.BigFileSorting
 {
     public class FileSplitter
     {
         private readonly IFileSystem _fileSystem;
+        private readonly IProgress _progress;
 
-        public FileSplitter(IFileSystem fileSystem)
+        public FileSplitter(IFileSystem fileSystem, IProgress progress )
         {
             _fileSystem = fileSystem;
+            _progress = progress;
             NumbersPerFile = 10000000;
         }
 
         private int _chunkNo = 0;
 
         public uint NumbersPerFile { get; set; }
-        public void SplitUintsIntoBinaryFiles(StreamReader reader)
+        public void SplitUIntsIntoBinaryFiles(StreamReader reader)
         {
             BinaryWriter sw = OpenNewWriter();
             int counter = 0;
+            _progress.Start("Generating chunks", 100);
             while (reader.Peek() >= 0)
             {
                 counter++;
-                sw.Write(ReadUint(reader));
+                sw.Write(reader.ReadUInt());
                 if (reader.Peek() < 0)
                 {
                     sw.Close();
@@ -34,30 +39,17 @@ namespace Consecutive.Core.BigFileSorting
                     sw.Close();
                     ++_chunkNo;
                     sw = OpenNewWriter();
+                    _progress.Tick("Writing chunk " + _chunkNo);
                 }
             }
+            _progress.Dispose();
         }
 
-        public int NumberOfChunks => _chunkNo;
+        public int NumberOfChunks => _chunkNo+1;
 
         private BinaryWriter OpenNewWriter()
         {
             return new BinaryWriter(_fileSystem.OpenFileForWriting(_chunkNo));
-        }
-
-        private uint ReadUint(TextReader sr)
-        {
-            StringBuilder sb = new StringBuilder();
-            while (sr.Peek() >= 0)
-            {
-                char current = (char)sr.Read();
-                if (current == ' ')
-                {
-                    break;
-                }
-                sb.Append(current);
-            }
-            return uint.Parse(sb.ToString());
         }
     }
 }

@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Consecutive.Core.BigFileUniqueNumbers;
-using NUnit.Framework.Internal;
+﻿using Consecutive.Core.BigFileUniqueNumbers;
 using NUnit.Framework;
 
 namespace Consecutive.Tests
 {
     [TestFixture]
-    class BigArrayUintTests
+    class BigArrayUIntTests
     {
         [TestCase(0U, true, 0U, true)]
         [TestCase(1U, true, 1U, true)]
@@ -22,7 +15,7 @@ namespace Consecutive.Tests
         [TestCase((uint)int.MaxValue+1, true, (uint)int.MaxValue+1, true)]
         public void GetSetTest(uint index, bool value, uint checkIndex, bool expected)
         {
-            var cut = new BitArrayUint();
+            var cut = new BitArrayUInt();
             cut.Set(index, value);
             Assert.IsTrue(expected == cut.Get(checkIndex));
         }
@@ -31,7 +24,7 @@ namespace Consecutive.Tests
         
         public void GetValuesFromArray()
         {
-            var cut = new BitArrayUint();
+            var cut = new BitArrayUInt();
             cut.Set(1, true);
             cut.Set(11, true);
             cut.Set(11111, true);

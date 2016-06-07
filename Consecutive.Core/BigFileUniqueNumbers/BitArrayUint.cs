@@ -1,53 +1,49 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Consecutive.Core.BigFileUniqueNumbers
 {
-    public class BitArrayUint
+    public class BitArrayUInt
     {
-        readonly BitArray first = new BitArray(int.MaxValue);
-        readonly BitArray second = new BitArray(int.MaxValue);
-        private bool intMaxValue = false;
-        private bool uintMaxValue = false;
+        readonly BitArray _first = new BitArray(int.MaxValue);
+        readonly BitArray _second = new BitArray(int.MaxValue);
+        private bool _intMaxValue = false;
+        private bool _uintMaxValue = false;
 
         public bool Get(uint index)
         {
             if (index < int.MaxValue)
             {
-                return first[GetFirstIndex(index)];
+                return _first[GetFirstIndex(index)];
             }
             if (index == int.MaxValue)
             {
-                return intMaxValue;
+                return _intMaxValue;
             }
             if (index < uint.MaxValue)
             {
-                return second[GetSecondIndex(index)];
+                return _second[GetSecondIndex(index)];
             }
-            return uintMaxValue;
+            return _uintMaxValue;
         }
 
         public void Set(uint index, bool value)
         {
             if (index < int.MaxValue)
             {
-                first[GetFirstIndex(index)] = value;
+                _first[GetFirstIndex(index)] = value;
             }
             else if(index == int.MaxValue)
             {
-                intMaxValue = value;
+                _intMaxValue = value;
             }
             else if (index < uint.MaxValue)
             {
-                second[GetSecondIndex(index)] = value;
+                _second[GetSecondIndex(index)] = value;
             }
             else if(index == uint.MaxValue)
             {
-                uintMaxValue = value;
+                _uintMaxValue = value;
             }
         }
 

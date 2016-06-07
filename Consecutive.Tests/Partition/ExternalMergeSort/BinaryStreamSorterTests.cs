@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Consecutive.Core.BigFileSorting;
 using NUnit.Framework;
 
@@ -24,7 +20,7 @@ namespace Consecutive.Tests.Partition.ExternalMergeSort
                 new[] { br.ReadUInt32(), br.ReadUInt32(), br.ReadUInt32(), br.ReadUInt32(), br.ReadUInt32() });
         }
 
-        private Stream GenerateStreamFromString(IEnumerable<uint> numbers)
+        private static Stream GenerateStreamFromString(IEnumerable<uint> numbers)
         {
             MemoryStream stream = new MemoryStream();
             BinaryWriter writer = new BinaryWriter(stream);

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Consecutive.Core;
 using Consecutive.Core.BigFileSorting;
-using NUnit.Framework.Internal;
 using NUnit.Framework;
 
 namespace Consecutive.Tests.Partition.ExternalMergeSort
@@ -30,7 +24,9 @@ namespace Consecutive.Tests.Partition.ExternalMergeSort
             }
 
 
-            new FilePartMerger(new FileSystem {FilePattern = "test{0}.binary"}).MergeSortParts(2, "c:/Test.txt");       
+            IEnumerable<uint> values = new FilePartMerger(new FileSystem {FilePattern = "test{0}.binary"}).MergeSortParts(2);
+
+            CollectionAssert.AreEqual(new uint[] {11,22,33,44}, values);
         }
     }
 }

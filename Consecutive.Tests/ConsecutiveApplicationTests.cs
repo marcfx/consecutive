@@ -11,7 +11,7 @@ namespace Consecutive.Tests
     [TestFixture]
     public class ConsecutiveApplicationTests
     {
-        [TestCase("24,2,5,22,8,4,3,23,22", "{2,3,4,5},{8},{22,23,24}")]
+        [TestCase("24 2 5 22 8 4 3 23 22", "{2,3,4,5}\r\n{8}\r\n{22,23,24}")]
         public void ProcessTest(string input, string expected)
         {
             var cut = MakeApplication();
@@ -24,13 +24,5 @@ namespace Consecutive.Tests
             return new ConsecutiveApplication(new GroupConverter(), new ConsecutivePartitioner(), new StringWriter(new StringBuilder()));
         }
 
-        [Test]
-        public void ProcessFileTest()
-        {
-            var cut = MakeApplication();
-            StreamWriter output =
-                File.CreateText(@"c:\Users\Marek\Source\Repos\consecutive\Consecutive.Console\bin\Debug\Test3_out.txt");
-            cut.ProcessFile(@"c:\Users\Marek\Source\Repos\consecutive\Consecutive.Console\bin\Debug\Test3.txt", output);
-        }
     }
 }

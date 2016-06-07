@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithm.cs" />
     <Compile Include="BigFileUniqueNumbers\BitArrayUint.cs" />
     <Compile Include="BigFileUniqueNumbers\BitmaskUintFinder.cs" />
     <Compile Include="ConsecutiveApplication.cs" />
@@ -58,7 +59,10 @@
     <Compile Include="BigFileSorting\FileSplitter.cs" />
     <Compile Include="Partition\IConsecutivePartitioner.cs" />
     <Compile Include="Partition\ConsecutivePartitioner.cs" />
+    <Compile Include="ProgressBar\IProgress.cs" />
+    <Compile Include="ProgressBar\Progress.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StreamReaderExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,44 +1,35 @@
 ﻿using System;
 using System.IO;
-using System.Text;
+using Consecutive.Core.ProgressBar;
 using ShellProgressBar;
 
 namespace Consecutive.Core.BigFileUniqueNumbers
 {
-    public class BitmaskUintFinder
+    public class BitmaskUIntFinder
     {
-        public BitArrayUint FindAllUints(StreamReader stream)
+        private IProgress progress;
+
+        public BitmaskUIntFinder(IProgress progress)
         {
-            var uintNumbers = new BitArrayUint();
-            using (var pbar = new ProgressBar(3000, "Processing input file", ConsoleColor.Cyan))
-            {
-                while (stream.Peek() >= 0)
-                {
-                    uint current = ReadUint(stream);
-                    uintNumbers.Set(current, true);
-                    if (current%1000000 < 100)
-                    {
-                        pbar.Tick("Reading input file ");
-                    }
-                }
-            }
-            
-            return uintNumbers;
+            this.progress = progress;
         }
 
-        private uint ReadUint(StreamReader sr)
+        public BitArrayUInt FindAllUInts(StreamReader stream)
         {
-            StringBuilder sb = new StringBuilder();
-            while (sr.Peek() >= 0)
+            var uIntNumbers = new BitArrayUInt();
+            progress.Start("Processing input file", 1000);
+            int i = 0;
+            while (stream.Peek() >= 0)
             {
-                char current = (char)sr.Read();
-                if (current == ' ')
+                uint current = stream.ReadUInt();
+                uIntNumbers.Set(current, true);
+                if (i++%100000==0)
                 {
-                    break;
+                progress.Tick("Reading number " + i);
                 }
-                sb.Append(current);
             }
-            return uint.Parse(sb.ToString());
+            progress.Dispose();
+            return uIntNumbers;
         }
     }
 }

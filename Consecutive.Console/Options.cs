@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CommandLine;
 using CommandLine.Text;
+using Consecutive.Core;
 
 namespace Consecutive.Console
 {
@@ -22,13 +23,15 @@ namespace Consecutive.Console
   HelpText = "Generate sample file.")]
         public string SampleFile { get; set; }
 
+
+        [Option('a', "algorithm", Required = false,
+  HelpText = "Algorithm for processing", DefaultValue = Algorithm.BitMask)]
+        public Algorithm Algorithm { get; set; }
+
         [Option('x', "sampleSize", Required = false,
   HelpText = "Sample file size.")]
         public int SampleFileSize { get; set; }
-        public bool IsOutputFileSet
-        {
-            get { return !string.IsNullOrEmpty(OutputFile); }
-        }
+        public bool IsOutputFileSet => !string.IsNullOrEmpty(OutputFile);
 
         [ParserState]
         public IParserState LastParserState { get; set; }

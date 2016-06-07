@@ -66,7 +66,6 @@
     <Compile Include="ConsecutiveApplicationTests.cs" />
     <Compile Include="FileSystemTests.cs" />
     <Compile Include="GroupDescriptorTests.cs" />
-    <Compile Include="Partition\ExternalMergeSort\BigFileSorterTests.cs" />
     <Compile Include="Partition\ExternalMergeSort\BinaryStreamSorterTests.cs" />
     <Compile Include="Partition\ExternalMergeSort\FilePartMergerTests.cs" />
     <Compile Include="Partition\ExternalMergeSort\FileSplitterTests.cs" />

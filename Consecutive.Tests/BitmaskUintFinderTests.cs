@@ -1,32 +1,28 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using Consecutive.Core.BigFileUniqueNumbers;
+using Consecutive.Core.ProgressBar;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace Consecutive.Tests
 {
     [TestFixture]
-    class BitmaskUintFinderTests
+    class BitmaskUIntFinderTests
     {
         [Test]
-        public void FindAllUintsTest()
+        public void FindAllUIntsTest()
         {
-            BitmaskUintFinder cut = new BitmaskUintFinder();
-            BitArrayUint uints;
+            BitmaskUIntFinder cut = new BitmaskUIntFinder(Substitute.For<IProgress>());
+            BitArrayUInt uInts;
             using (StreamReader streamReader = GenerateStreamFromString("0 33 102345 99999911 2999991122"))
             {
-                uints = cut.FindAllUints(streamReader);
+                uInts = cut.FindAllUInts(streamReader);
             }
-            Assert.IsTrue(uints.Get(0));
-            Assert.IsTrue(uints.Get(33));
-            Assert.IsTrue(uints.Get(102345));
-            Assert.IsTrue(uints.Get(99999911));
-            Assert.IsTrue(uints.Get(2999991122));
+            Assert.IsTrue(uInts.Get(0));
+            Assert.IsTrue(uInts.Get(33));
+            Assert.IsTrue(uInts.Get(102345));
+            Assert.IsTrue(uInts.Get(99999911));
+            Assert.IsTrue(uInts.Get(2999991122));
         }
        
         private StreamReader GenerateStreamFromString(string s)

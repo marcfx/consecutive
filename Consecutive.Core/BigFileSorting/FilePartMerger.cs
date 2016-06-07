@@ -15,10 +15,10 @@ namespace Consecutive.Core.BigFileSorting
             _fileSystem = fileSystem;
         }
 
-        public void MergeSortParts(int chunkCount, string outputFile)
+        public IEnumerable<uint> MergeSortParts(int chunkCount)
         {
-            int bufferSize = ExpectedMemoryUsage / chunkCount; 
-            int bufferNoOfRecords = (int)(bufferSize / sizeof(uint) / QueueOverhead); 
+            int bufferSize = ExpectedMemoryUsage/chunkCount;
+            int bufferNoOfRecords = (int) (bufferSize/sizeof(uint)/QueueOverhead);
 
             IList<BinaryReader> readers = _fileSystem.OpenAllChunks(chunkCount);
 
@@ -26,31 +26,25 @@ namespace Consecutive.Core.BigFileSorting
 
             LoadDataToQueues(queues, readers, bufferNoOfRecords);
 
-            MergeSort(outputFile, queues, readers, bufferNoOfRecords);
-
-            _fileSystem.DeleteAllChunks(chunkCount);
-
+            return MergeSort(queues, readers, bufferNoOfRecords);
         }
 
-        private static void MergeSort(string outputFile, Queue<uint>[] queues, IList<BinaryReader> readers, int bufferLen)
+        private static IEnumerable<uint> MergeSort(Queue<uint>[] queues, IList<BinaryReader> readers, int bufferLen)
         {
-            using (StreamWriter sw = new StreamWriter(outputFile))
+            while (true)
             {
-                while (true)
+                var lowestIndex = -1;
+                var lowestValue = FindLowestValue(queues, ref lowestIndex);
+
+                if (WasNothingFoundInAnyQueue(lowestIndex))
                 {
-                    var lowestIndex = -1;
-                    var lowestValue = FindLowestValue(queues, ref lowestIndex);
-
-                    if (WasNothingFoundInAnyQueue(lowestIndex))
-                    {
-                        break;
-                    }
-
-                    sw.WriteLine(lowestValue);
-                    queues[lowestIndex].Dequeue();
-
-                    LoadDataToQueueWhenNeeded(ref queues[lowestIndex], readers[lowestIndex], bufferLen);
+                    break;
                 }
+
+                yield return lowestValue;
+                queues[lowestIndex].Dequeue();
+
+                LoadDataToQueueWhenNeeded(ref queues[lowestIndex], readers[lowestIndex], bufferLen);
             }
         }
 

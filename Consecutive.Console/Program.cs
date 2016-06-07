@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Consecutive.Core;
 using Consecutive.Core.Converters;
 using Consecutive.Core.Partition;
@@ -17,14 +13,48 @@ namespace Consecutive.Console
             var options = new Options();
             if (CommandLine.Parser.Default.ParseArguments(args, options))
             {
-                if (options.SampleFile != null)
+                GenerateSampleFile(options);
+                System.Console.WriteLine($"Started at {DateTime.Now.ToLongTimeString()}.");
+                Process(options);
+                System.Console.WriteLine($"Finished at {DateTime.Now.ToLongTimeString()}.");
+            }
+        }
+
+        private static void Process(Options options)
+        {
+            System.Console.WriteLine($"Processing using {options.Algorithm} algorithm.");
+            switch (options.Algorithm)
+            {
+                case Algorithm.BitMask:
                 {
-                    new SampleGenerator().GenerateSampleFile(options.SampleFile, options.SampleFileSize);
+                    using (TextWriter outputWriter = GetOutputWriter(options))
+                    {
+                        Bootstrap().ProcessFile(options.InputFile, outputWriter);
+                    }
+                    break;
                 }
-                using (TextWriter outputWriter = GetOutputWriter(options))
+                case Algorithm.InMemorySimple:
                 {
-                    Bootstrap().ProcessFile(options.InputFile, outputWriter);
+                    string result = Bootstrap().Process(File.ReadAllText(options.InputFile));
+                    File.WriteAllText(options.OutputFile, result);
+                    break;
                 }
+                case Algorithm.ExternalMergeSort:
+                {
+                    using (TextWriter outputWriter = GetOutputWriter(options))
+                    {
+                        Bootstrap().ProcessMergeSort(options.InputFile, outputWriter);
+                    }
+                    break;
+                }
+            }
+        }
+
+        private static void GenerateSampleFile(Options options)
+        {
+            if (options.SampleFile != null)
+            {
+                new SampleGenerator().GenerateSampleFile(options.SampleFile, options.SampleFileSize);
             }
         }
 

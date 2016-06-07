@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Consecutive.Core.BigFileSorting;
 using Consecutive.Core.BigFileUniqueNumbers;
 using Consecutive.Core.Converters;
 using Consecutive.Core.Partition;
+using Consecutive.Core.ProgressBar;
 using ShellProgressBar;
 
 namespace Consecutive.Core
@@ -36,23 +35,38 @@ namespace Consecutive.Core
 
         public void ProcessFile(string fileName, TextWriter outWriter)
         {
-            var bigArray = new BitmaskUintFinder();
-            BitArrayUint uints;
+            var bigArray = new BitmaskUIntFinder(new Progress());
+            BitArrayUInt uInts;
             using (var stream = new StreamReader(new FileStream(fileName, FileMode.Open)))
             {
-                uints = bigArray.FindAllUints(stream);
+                uInts = bigArray.FindAllUInts(stream);
             }
-            IEnumerable<GroupDescriptor> consecutiveGroups = _consecutivePartitioner.Partition(uints.GetValuesFromArray());
+            IEnumerable<GroupDescriptor> consecutiveGroups = _consecutivePartitioner.Partition(uInts.GetValuesFromArray());
             WriteToFile(outWriter, consecutiveGroups);
+        }
+
+        public void ProcessMergeSort(string fileName, TextWriter outWriter)
+        {
+            var fileSorter = Bootstrap();
+            IEnumerable<uint> uIntIterator = fileSorter.Sort(fileName);
+            IEnumerable<GroupDescriptor> consecutiveGroups = _consecutivePartitioner.Partition(uIntIterator);
+            WriteToFile(outWriter, consecutiveGroups);
+        }
+
+        private static BigFileSorter Bootstrap()
+        {
+            var fileSystem = new FileSystem();
+            return new BigFileSorter(new FileSplitter(fileSystem, new Progress()), fileSystem, new BinaryStreamSorter(), new FilePartMerger(fileSystem));
         }
 
         private void WriteToFile(TextWriter outWriter, IEnumerable<GroupDescriptor> consecutiveGroups)
         {
-            using (var pbar = new ProgressBar(3000, "Writing groups", ConsoleColor.Cyan))
+            using (var pbar = new ShellProgressBar.ProgressBar(3000, "Writing groups", ConsoleColor.Cyan))
             {
+                int i = 0;
                 foreach (GroupDescriptor groupDescriptor in consecutiveGroups)
                 {
-                    if (groupDescriptor.ConsecutiveStart%1000000 < 100)
+                    if (i++%500000 ==0)
                     {
                         pbar.Tick("Writing groups " + groupDescriptor.ConsecutiveStart);
                     }
@@ -61,8 +75,6 @@ namespace Consecutive.Core
                     outWriter.WriteLine(formatedSequence);
                 }
             }
-
-             
         }
     }
 }

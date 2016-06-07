@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Consecutive.Core;
+﻿using System.Collections.Generic;
 using Consecutive.Core.Partition;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 
 namespace Consecutive.Tests.Partition
 {
@@ -28,7 +25,7 @@ namespace Consecutive.Tests.Partition
         public void PartitionTest()
         {
             ConsecutivePartitioner cut = new ConsecutivePartitioner();
-            IList<uint> input = new uint[] { 1, 2, 3, 5, 7, 8, 9, 11, uint.MaxValue-1, uint.MaxValue };
+            IList<uint> input = new uint[] { 1,1, 2, 3, 5, 7, 8, 9, 11, uint.MaxValue-1, uint.MaxValue };
             IEnumerable<GroupDescriptor> result = cut.Partition(input);
             CollectionAssert.AreEqual(new[]
             {

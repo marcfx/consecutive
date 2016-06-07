@@ -57,6 +57,10 @@ namespace Consecutive.Core.Partition
                     previous = current;
                     continue;
                 }
+                if (previous == current)
+                {
+                    continue;
+                }
                 if (IsConsecutive(current, previous.Value))
                 {
                     consecutiveCount ++;

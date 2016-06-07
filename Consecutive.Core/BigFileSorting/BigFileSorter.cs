@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using ShellProgressBar;
 
 namespace Consecutive.Core.BigFileSorting
 {
@@ -17,17 +20,20 @@ namespace Consecutive.Core.BigFileSorting
             _filePartMerger = filePartMerger;
         }
 
-        public void Sort(string fileName)
+        public IEnumerable<uint> Sort(string fileName)
         {
-            _fileSplitter.SplitUintsIntoBinaryFiles(File.OpenText(fileName));
+            _fileSplitter.SplitUIntsIntoBinaryFiles(File.OpenText(fileName));
+
+            using (var pbar = new ShellProgressBar.ProgressBar(_fileSplitter.NumberOfChunks, "Generating chunks", ConsoleColor.Cyan))
             for (int i = 0; i < _fileSplitter.NumberOfChunks; i++)
             {
+                pbar.Tick("Sorting chunk " + i);
                 using (Stream stream = _fileSystem.OpenFileForWriting(i))
                 {
                     _binaryStreamSorter.SortBinaryFileInMemory(stream);
                 }
             }
-            _filePartMerger.MergeSortParts(_fileSplitter.NumberOfChunks, fileName);
+            return _filePartMerger.MergeSortParts(_fileSplitter.NumberOfChunks);
         }
     }
 }
